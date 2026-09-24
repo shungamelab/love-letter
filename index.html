@@ -21,11 +21,13 @@
     .next-btn{position:relative;width:100%;margin-top:20px;padding:16px;overflow:hidden;border:0;border-radius:16px;background:linear-gradient(100deg,var(--pink),#ff5d7d 45%,var(--purple));background-size:200%;color:#fff;cursor:pointer;font-size:17px;font-weight:800;letter-spacing:.05em;box-shadow:0 12px 26px #ff4f914d;transition:.2s;animation:gradient 4s ease infinite}.next-btn:after{content:"→";position:absolute;right:18px;transition:.2s}.next-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 16px 32px #ff4f9161}.next-btn:hover:not(:disabled):after{transform:translateX(4px)}.next-btn:disabled{background:#d4cdd7;box-shadow:none;cursor:default;animation:none}
     .message{height:24px;margin-top:14px;font-size:14px;font-weight:800;text-align:center}.message.ok{color:#16a55a;animation:pop .35s}.message.error{color:#e23f58}
     .screen-exit{animation:screenExit .36s both}.screen-enter{animation:screenEnter .48s cubic-bezier(.22,1,.36,1) both}
-    .success{position:relative;overflow:hidden;margin-bottom:26px;padding:21px;border:1px solid #69ff9c38;border-radius:16px;background:#110f18;color:#6aff9b;font:13px/1.8 ui-monospace,Consolas,monospace;text-align:left;box-shadow:inset 0 0 28px #4aff8c0f,0 10px 28px #160b1d2e}.success:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#5dff950e,transparent);transform:translateY(-100%);animation:scan 2.5s linear infinite}.terminal-line:before{content:"> ";opacity:.55}.decrypt-bar{color:#b2ffca;letter-spacing:-.12em}
-    .envelope-wrap{display:grid;place-items:center;height:130px;margin:0 auto -22px;perspective:700px}.envelope{position:relative;width:150px;height:94px;border-radius:7px;background:#f6b7cb;box-shadow:0 16px 26px #853c5c33;animation:bounce 1.4s ease-in-out infinite alternate}.envelope:before,.envelope:after{content:"";position:absolute;inset:0}.envelope:before{z-index:2;border-radius:7px;background:linear-gradient(145deg,transparent 49%,#ffd1df 50%) left/50% 100% no-repeat,linear-gradient(215deg,transparent 49%,#ffc4d7 50%) right/50% 100% no-repeat}.envelope:after{z-index:1;clip-path:polygon(0 0,100% 0,50% 68%);background:#ffdae6;transform-origin:top;animation:flap .8s .65s cubic-bezier(.22,1,.36,1) both}.seal{position:absolute;z-index:3;top:34px;left:58px;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#ff477d,#d92862);color:#fff;box-shadow:0 3px 8px #6f1f4c4d;animation:seal .35s .55s ease both reverse}
-    .letter-title{margin:24px 0 18px;font:clamp(27px,7vw,36px) Georgia,"Yu Mincho",serif}.letter{position:relative;padding:30px 27px;border:1px solid #f0ded4;border-radius:8px;background:linear-gradient(#bd8b6f0e 1px,transparent 1px) 0 12px/100% 32px,#fffaf4;box-shadow:0 16px 36px #5b36271f;font:16px/2 Georgia,"Yu Mincho",serif;white-space:pre-line;transform-origin:top;animation:unfold .9s .8s cubic-bezier(.22,1,.36,1) both}.letter:before,.letter:after{content:"♥";position:absolute;color:#ff4f9129;font-size:24px}.letter:before{top:12px;right:16px}.letter:after{bottom:10px;left:16px}
+    .verify-title{margin:8px 0 22px}.scanner{position:relative;width:112px;height:112px;margin:0 auto 18px;border:1px solid #a474ff66;border-radius:50%;background:radial-gradient(circle,#ff4f9145 0 8%,transparent 9%),repeating-radial-gradient(circle,transparent 0 19px,#9b72ff2b 20px 21px);box-shadow:0 0 30px #9b72ff30;overflow:hidden}.scanner:before{content:"";position:absolute;inset:50% 50% 50% 50%;width:50%;height:50%;transform-origin:0 0;background:linear-gradient(45deg,#9b72ff55,transparent 70%);animation:radar 1.15s linear infinite}.scanner:after{content:"♥";position:absolute;inset:0;display:grid;place-items:center;color:#ff7aa9;font-size:25px;filter:drop-shadow(0 0 8px #ff4f91)}
+    .success{position:relative;overflow:hidden;min-height:174px;margin-bottom:18px;padding:18px 20px;border:1px solid #69ff9c38;border-radius:16px;background:#110f18;color:#6aff9b;font:12px/1.9 ui-monospace,Consolas,monospace;text-align:left;box-shadow:inset 0 0 28px #4aff8c0f,0 10px 28px #160b1d2e}.success:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#5dff950e,transparent);transform:translateY(-100%);animation:scan 2s linear infinite}.terminal-line{animation:terminalIn .25s both}.terminal-line:before{content:"> ";opacity:.55}.terminal-line.done:after{content:"  [ OK ]";float:right;color:#b2ffca}.terminal-cursor{display:inline-block;width:7px;height:1em;margin-left:3px;vertical-align:-2px;background:#6aff9b;animation:blink .7s steps(1) infinite}
+    .verify-meter{height:8px;overflow:hidden;border-radius:99px;background:#e6dfeb}.verify-fill{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#50e3c2,var(--purple),var(--pink));box-shadow:0 0 14px #9b72ff88;transition:width .55s cubic-bezier(.22,1,.36,1)}.verify-percent{margin-top:8px;color:var(--muted);font:700 12px ui-monospace,Consolas,monospace;text-align:right}.verified .scanner{border-color:#5dff9b;box-shadow:0 0 42px #42df8666;animation:verifiedPulse .7s ease}.verified .verify-title{color:#19a85c;animation:pop .45s}
+    .delivery-title{margin:10px 0 4px;font-size:clamp(22px,5vw,29px)}.envelope-stage{display:block;width:100%;padding:28px 0 12px;border:0;background:transparent;color:var(--ink);cursor:pointer;perspective:800px}.envelope-stage:focus-visible{outline:3px solid #9b72ff66;outline-offset:5px;border-radius:18px}.envelope-wrap{display:grid;place-items:center;height:190px}.envelope{position:relative;width:210px;height:132px;border-radius:9px;background:#f6b7cb;box-shadow:0 22px 34px #853c5c42;animation:bounce 1.4s ease-in-out infinite alternate;transition:transform .8s}.envelope:before,.envelope:after{content:"";position:absolute;inset:0}.envelope:before{z-index:3;border-radius:9px;background:linear-gradient(145deg,transparent 49%,#ffd1df 50%) left/50% 100% no-repeat,linear-gradient(215deg,transparent 49%,#ffc4d7 50%) right/50% 100% no-repeat}.envelope:after{z-index:4;clip-path:polygon(0 0,100% 0,50% 68%);background:#ffdae6;transform-origin:top;transition:transform .65s cubic-bezier(.22,1,.36,1),z-index 0s .32s}.paper-preview{position:absolute;z-index:2;left:15px;right:15px;top:8px;height:112px;padding-top:22px;border-radius:5px;background:#fffaf4;color:#ad7186;font:700 16px Georgia,serif;letter-spacing:.12em;box-shadow:0 4px 12px #71384f20;transition:transform .8s .35s cubic-bezier(.22,1,.36,1)}.seal{position:absolute;z-index:5;top:48px;left:87px;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:linear-gradient(145deg,#ff477d,#d92862);color:#fff;font-size:18px;box-shadow:0 3px 8px #6f1f4c4d;transition:.3s}.open-hint{margin:12px 0 0;color:var(--muted);font-size:14px;font-weight:700;letter-spacing:.06em;animation:hint 1.2s ease-in-out infinite}.envelope-stage.opened{pointer-events:none}.envelope-stage.opened .envelope{animation:none;transform:translateY(26px)}.envelope-stage.opened .envelope:after{z-index:1;transform:rotateX(180deg)}.envelope-stage.opened .paper-preview{transform:translateY(-82px)}.envelope-stage.opened .seal{opacity:0;transform:scale(1.8)}.envelope-stage.opened .open-hint{opacity:0}
+    .letter-content{margin-top:4px}.letter-title{margin:18px 0;font:clamp(27px,7vw,36px) Georgia,"Yu Mincho",serif}.letter{position:relative;padding:30px 27px;border:1px solid #f0ded4;border-radius:8px;background:linear-gradient(#bd8b6f0e 1px,transparent 1px) 0 12px/100% 32px,#fffaf4;box-shadow:0 16px 36px #5b36271f;font:16px/2 Georgia,"Yu Mincho",serif;white-space:pre-line;transform-origin:top;animation:unfold .9s cubic-bezier(.22,1,.36,1) both}.letter:before,.letter:after{content:"♥";position:absolute;color:#ff4f9129;font-size:24px}.letter:before{top:12px;right:16px}.letter:after{bottom:10px;left:16px}
     .hidden{display:none}.confetti{position:fixed;z-index:20;top:var(--top);left:var(--left);width:var(--w);height:calc(var(--w)*.55);border-radius:2px;background:var(--color);pointer-events:none;animation:confetti var(--duration) cubic-bezier(.1,.7,.35,1) forwards}.flash{position:fixed;z-index:15;inset:0;pointer-events:none;background:radial-gradient(circle,#ffffffe6,#ff5a9c33 38%,transparent 72%);animation:flash .65s forwards}
-    @keyframes drift{to{transform:translate(35px,45px) scale(1.14)}}@keyframes floatUp{0%{opacity:0;transform:translateY(0) rotate(-15deg)}12%{opacity:1}100%{opacity:0;transform:translateY(-115vh) rotate(25deg)}}@keyframes optionIn{from{opacity:0;transform:translateY(12px)}}@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}@keyframes pop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.15)}}@keyframes gradient{50%{background-position:100%}}@keyframes screenExit{to{opacity:0;transform:translateX(-24px) scale(.98)}}@keyframes screenEnter{from{opacity:0;transform:translateX(24px) scale(.98);filter:blur(3px)}}@keyframes scan{to{transform:translateY(100%)}}@keyframes bounce{to{transform:translateY(-7px) rotate(1deg)}}@keyframes flap{to{transform:rotateX(180deg);z-index:0}}@keyframes seal{to{opacity:0;transform:scale(1.6)}}@keyframes unfold{from{opacity:0;transform:rotateX(-75deg) translateY(-35px) scaleY(.25)}}@keyframes confetti{to{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r))}}@keyframes flash{to{opacity:0}}
+    @keyframes drift{to{transform:translate(35px,45px) scale(1.14)}}@keyframes floatUp{0%{opacity:0;transform:translateY(0) rotate(-15deg)}12%{opacity:1}100%{opacity:0;transform:translateY(-115vh) rotate(25deg)}}@keyframes optionIn{from{opacity:0;transform:translateY(12px)}}@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}@keyframes pop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.15)}}@keyframes gradient{50%{background-position:100%}}@keyframes screenExit{to{opacity:0;transform:translateX(-24px) scale(.98)}}@keyframes screenEnter{from{opacity:0;transform:translateX(24px) scale(.98);filter:blur(3px)}}@keyframes scan{to{transform:translateY(100%)}}@keyframes radar{to{transform:rotate(360deg)}}@keyframes blink{50%{opacity:0}}@keyframes terminalIn{from{opacity:0;transform:translateX(-8px)}}@keyframes verifiedPulse{50%{transform:scale(1.08)}}@keyframes bounce{to{transform:translateY(-7px) rotate(1deg)}}@keyframes hint{50%{opacity:.45;transform:translateY(3px)}}@keyframes unfold{from{opacity:0;transform:translateY(-90px) scale(.86);filter:blur(4px)}}@keyframes confetti{to{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r))}}@keyframes flash{to{opacity:0}}
     @media(max-width:520px){body{padding:16px 12px}.container{padding:26px 20px;border-radius:24px}h2{min-height:auto;margin-bottom:20px}.option{padding:12px 14px;margin:9px 0}.letter{padding:27px 21px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.floating-heart{display:none}}
   </style>
@@ -48,16 +50,30 @@
       <button id="nextButton" class="next-btn" disabled>回答する</button>
       <div id="message" class="message" aria-live="polite"></div>
     </section>
+    <section id="verifyScreen" class="hidden" aria-live="polite">
+      <p class="eyebrow">FINAL VERIFICATION</p>
+      <div class="scanner" aria-hidden="true"></div>
+      <h2 class="verify-title" id="verifyTitle">記憶データを照合中...</h2>
+      <div class="success" id="terminalLog"></div>
+      <div class="verify-meter"><div class="verify-fill" id="verifyFill"></div></div>
+      <div class="verify-percent" id="verifyPercent">0%</div>
+    </section>
+
     <section id="letterScreen" class="hidden">
-      <div class="success" aria-live="polite">
-        <div class="terminal-line">AUTHENTICATION SUCCESS</div>
-        <div class="terminal-line">USER VERIFIED ✓</div>
-        <div class="terminal-line">ACCESS LEVEL : LOVER</div>
-        <div class="terminal-line">Decrypting message... <span class="decrypt-bar">████████████████</span> 100%</div>
-      </div>
-      <div class="envelope-wrap" aria-hidden="true"><div class="envelope"><span class="seal">♥</span></div></div>
-      <h1 class="letter-title">💌 ○○へ</h1>
-      <div class="letter">○○へ
+      <p class="eyebrow">MESSAGE UNLOCKED</p>
+      <h2 class="delivery-title">あなたへの手紙が届きました</h2>
+      <button class="envelope-stage" id="envelopeButton" type="button" aria-label="封筒を開いて手紙を読む" aria-expanded="false">
+        <span class="envelope-wrap">
+          <span class="envelope">
+            <span class="paper-preview">FOR YOU ♥</span>
+            <span class="seal">♥</span>
+          </span>
+        </span>
+        <span class="open-hint">封筒をタップして開く</span>
+      </button>
+      <div class="letter-content hidden" id="letterContent">
+        <h1 class="letter-title">💌 ○○へ</h1>
+        <div class="letter">○○へ
 
 ここまで来てくれてありがとう。
 
@@ -75,6 +91,7 @@
 いつもありがとう。
 
 大好きです。</div>
+      </div>
     </section>
   </main>
   <script>
@@ -86,7 +103,7 @@
       {question:"これからも一緒にいてくれますか？",options:["はい","もちろん","当然","ずっと","全部正解"],answer:4}
     ];
     let currentQuestion=0,selectedAnswer=null,isTransitioning=false;
-    const quizScreen=document.querySelector("#quizScreen"),letterScreen=document.querySelector("#letterScreen"),card=document.querySelector("#card"),questionText=document.querySelector("#question"),optionsContainer=document.querySelector("#options"),nextButton=document.querySelector("#nextButton"),progress=document.querySelector("#progress"),progressFill=document.querySelector("#progressFill"),message=document.querySelector("#message"),reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const quizScreen=document.querySelector("#quizScreen"),verifyScreen=document.querySelector("#verifyScreen"),letterScreen=document.querySelector("#letterScreen"),card=document.querySelector("#card"),questionText=document.querySelector("#question"),optionsContainer=document.querySelector("#options"),nextButton=document.querySelector("#nextButton"),progress=document.querySelector("#progress"),progressFill=document.querySelector("#progressFill"),message=document.querySelector("#message"),verifyTitle=document.querySelector("#verifyTitle"),terminalLog=document.querySelector("#terminalLog"),verifyFill=document.querySelector("#verifyFill"),verifyPercent=document.querySelector("#verifyPercent"),envelopeButton=document.querySelector("#envelopeButton"),letterContent=document.querySelector("#letterContent"),reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
     function showQuestion(animate=false){
       selectedAnswer=null;isTransitioning=false;nextButton.disabled=true;message.textContent="";message.className="message";
       const q=questions[currentQuestion];
@@ -109,7 +126,7 @@
         card.animate([{transform:"translateX(0)"},{transform:"translateX(-5px)"},{transform:"translateX(5px)"},{transform:"translateX(0)"}],{duration:250});return
       }
       isTransitioning=true;nextButton.disabled=true;selectedButton.classList.add("correct");message.textContent="✓ MEMORY MATCHED";message.className="message ok";burst(selectedButton,22);
-      setTimeout(()=>{currentQuestion++;if(currentQuestion>=questions.length){showLetter();return}quizScreen.classList.remove("screen-enter");quizScreen.classList.add("screen-exit");setTimeout(()=>showQuestion(true),reduceMotion?0:300)},reduceMotion?0:680)
+      setTimeout(()=>{currentQuestion++;if(currentQuestion>=questions.length){runVerification();return}quizScreen.classList.remove("screen-enter");quizScreen.classList.add("screen-exit");setTimeout(()=>showQuestion(true),reduceMotion?0:300)},reduceMotion?0:680)
     };
     function burst(origin,amount){
       if(reduceMotion)return;
@@ -121,7 +138,32 @@
       const flash=document.createElement("div");flash.className="flash";document.body.appendChild(flash);flash.onanimationend=()=>flash.remove();
       burst({getBoundingClientRect:()=>({left:innerWidth/2-1,top:Math.min(innerHeight*.34,300),width:2,height:2})},90)
     }
-    function showLetter(){quizScreen.classList.add("hidden");letterScreen.classList.remove("hidden");letterScreen.classList.add("screen-enter");document.body.style.alignItems="start";scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"});finale()}
+    const verificationSteps=[
+      "QUESTION LOG........ 5 / 5 RECEIVED",
+      "ANSWER SIGNATURE.... ANALYZING",
+      "MEMORY HASH......... MATCHED",
+      "EMOTION PATTERN..... CONFIRMED",
+      "ACCESS KEY.......... GENERATED"
+    ];
+    const wait=ms=>new Promise(resolve=>setTimeout(resolve,reduceMotion?50:ms));
+    async function runVerification(){
+      quizScreen.classList.add("hidden");verifyScreen.classList.remove("hidden");verifyScreen.classList.add("screen-enter");terminalLog.innerHTML="";
+      for(let i=0;i<verificationSteps.length;i++){
+        const line=document.createElement("div"),cursor=document.createElement("span");line.className="terminal-line";cursor.className="terminal-cursor";line.textContent=verificationSteps[i];line.appendChild(cursor);terminalLog.appendChild(line);
+        await wait(540+i*75);cursor.remove();line.classList.add("done");const percent=Math.round((i+1)/verificationSteps.length*100);verifyFill.style.width=`${percent}%`;verifyPercent.textContent=`${percent}%`;
+      }
+      await wait(450);verifyScreen.classList.add("verified");verifyTitle.textContent="照合完了！";
+      const complete=document.createElement("div");complete.className="terminal-line done";complete.textContent="AUTHENTICATION COMPLETE";terminalLog.appendChild(complete);burst(document.querySelector(".scanner"),50);await wait(1200);showEnvelope();
+    }
+    function showEnvelope(){
+      verifyScreen.classList.add("screen-exit");setTimeout(()=>{verifyScreen.classList.add("hidden");letterScreen.classList.remove("hidden");letterScreen.classList.add("screen-enter");document.body.style.alignItems="center";finale();envelopeButton.focus({preventScroll:true})},reduceMotion?0:320)
+    }
+    function openLetter(){
+      if(envelopeButton.classList.contains("opened"))return;
+      envelopeButton.classList.add("opened");envelopeButton.setAttribute("aria-expanded","true");
+      setTimeout(()=>{letterContent.classList.remove("hidden");letterContent.classList.add("screen-enter");document.body.style.alignItems="start";setTimeout(()=>letterContent.scrollIntoView({behavior:reduceMotion?"auto":"smooth",block:"start"}),reduceMotion?0:250);burst(document.querySelector(".paper-preview"),34)},reduceMotion?0:1050)
+    }
+    envelopeButton.addEventListener("click",openLetter);
     showQuestion();
   </script>
 </body>
