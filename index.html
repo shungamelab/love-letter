@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For You</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                linear-gradient(135deg, #fff0f5, #f5f0ff);
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+
+            background: white;
+            padding: 35px;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 15px 50px rgba(0, 0, 0, 0.10);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .question {
+            margin-bottom: 35px;
+        }
+
+        .question h3 {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+
+            padding: 13px 15px;
+            margin: 8px 0;
+
+            border: 2px solid #eee;
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        label:hover {
+            border-color: #ff8fb1;
+            background: #fff6f9;
+        }
+
+        input {
+            margin-right: 10px;
+        }
+
+        button {
+            width: 100%;
+
+            border: none;
+
+            padding: 16px;
+
+            border-radius: 15px;
+
+            background: #ff6f9f;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 25px;
+            font-weight: bold;
+        }
+
+        #letter {
+            display: none;
+
+            animation: fadeIn 1.5s;
+
+            line-height: 2;
+        }
+
+        .success {
+            text-align: center;
+
+            font-family: monospace;
+
+            background: #111;
+            color: #6aff8d;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            margin-bottom: 30px;
+        }
+
+        .letter-box {
+            background: #fffaf4;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            font-family: serif;
+
+            font-size: 17px;
+
+            white-space: pre-line;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- クイズ画面 -->
+    <div id="quiz">
+
+        <h1>🔐 Private Page</h1>
+
+        <p class="description">
+            このページを見るには本人確認が必要です。<br>
+            全問正解してください。
+        </p>
+
+
+        <!-- 問題1 -->
+        <div class="question">
+
+            <h3>Q1. 初めてデートした場所は？</h3>
+
+            <label>
+                <input type="radio" name="q1" value="1">
+                水族館
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="2">
+                映画館
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="3">
+                カフェ
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="4">
+                ゲームセンター
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="5">
+                公園
+            </label>
+
+        </div>
+
+
+        <!-- 問題2 -->
+        <div class="question">
+
+            <h3>Q2. 初めて一緒に食べたものは？</h3>
+
+            <label>
+                <input type="radio" name="q2" value="1">
+                ラーメン
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="2">
+                パスタ
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="3">
+                焼肉
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="4">
+                寿司
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="5">
+                ハンバーグ
+            </label>
+
+        </div>
+
+
+        <!-- 問題3 -->
+        <div class="question">
+
+            <h3>Q3. 俺が一番好きなのは？</h3>
+
+            <label>
+                <input type="radio" name="q3" value="1">
+                ゲーム
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="2">
+                ダーツ
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="3">
+                寝ること
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="4">
+                ご飯
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="5">
+                あなた
+            </label>
+
+        </div>
+
+
+        <button onclick="checkAnswers()">
+            認証する
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+    <!-- 手紙 -->
+    <div id="letter">
+
+        <div class="success">
+
+            AUTHENTICATION SUCCESS<br><br>
+
+            USER VERIFIED ✓<br>
+            ACCESS LEVEL : LOVER<br><br>
+
+            Decrypting message...<br>
+            ████████████████ 100%
+
+        </div>
+
+
+        <h1>💌 ○○へ</h1>
+
+        <div class="letter-box">
+○○へ
+
+このページまで来てくれてありがとう。
+
+せっかく手紙を渡すなら、
+普通の手紙じゃつまらないと思って
+こんなのを作ってみました。
+
+一緒にいるようになってから、
+楽しいこともいっぱいあったし、
+たまには喧嘩したりすることもあったけど、
+
+これからもいっぱい思い出を作っていきたいです。
+
+いつもありがとう。
+
+そして、これからもよろしく。
+
+大好きです。
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function checkAnswers() {
+
+    // 正解
+    const answers = {
+        q1: "1",
+        q2: "3",
+        q3: "5"
+    };
+
+    let correct = 0;
+    let answered = 0;
+
+    for (const question in answers) {
+
+        const selected =
+            document.querySelector(
+                `input[name="${question}"]:checked`
+            );
+
+        if (selected) {
+
+            answered++;
+
+            if (selected.value === answers[question]) {
+                correct++;
+            }
+        }
+    }
+
+
+    const total =
+        Object.keys(answers).length;
+
+    const result =
+        document.getElementById("result");
+
+
+    if (answered !== total) {
+
+        result.innerHTML =
+            "⚠️ まだ回答していない問題があります。";
+
+        return;
+    }
+
+
+    if (correct === total) {
+
+        result.innerHTML =
+            "認証成功 ✓";
+
+
+        setTimeout(() => {
+
+            document.getElementById("quiz")
+                .style.display = "none";
+
+            document.getElementById("letter")
+                .style.display = "block";
+
+        }, 800);
+
+    }
+
+    else {
+
+        result.innerHTML =
+            `❌ ACCESS DENIED<br><br>
+            ${correct} / ${total} 問正解`;
+
+    }
+}
+
+</script>
+
+</body>
+</html>
