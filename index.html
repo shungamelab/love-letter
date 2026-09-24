@@ -3,177 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#190f29">
   <title>For You</title>
-
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #fff0f5, #f4efff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 520px;
-      background: white;
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-    }
-
-    h1, h2 {
-      text-align: center;
-    }
-
-    .progress {
-      text-align: center;
-      color: #888;
-      margin-bottom: 25px;
-    }
-
-    .option {
-      display: block;
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      border: 2px solid #eee;
-      border-radius: 14px;
-      background: white;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.2s;
-    }
-
-    .option:hover {
-      border-color: #ff7faa;
-      background: #fff6f9;
-    }
-
-    .option.selected {
-      border-color: #ff6f9f;
-      background: #ffe9f1;
-    }
-
-    .next-btn {
-      width: 100%;
-      margin-top: 20px;
-      padding: 15px;
-      border: none;
-      border-radius: 14px;
-      background: #ff6f9f;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .next-btn:disabled {
-      background: #ccc;
-      cursor: default;
-    }
-
-    .message {
-      text-align: center;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    .success {
-      background: #111;
-      color: #6aff8d;
-      font-family: monospace;
-      padding: 20px;
-      border-radius: 14px;
-      text-align: center;
-      line-height: 1.8;
-      margin-bottom: 25px;
-    }
-
-    .letter {
-      background: #fffaf4;
-      padding: 25px;
-      border-radius: 16px;
-      line-height: 2;
-      font-family: serif;
-      white-space: pre-line;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .fade {
-      animation: fadeIn 0.4s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    :root{--pink:#ff4f91;--purple:#9770ff;--ink:#2d2035;--muted:#8d8093;--green:#42df86}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;min-height:100svh;overflow-x:hidden;display:grid;place-items:center;padding:28px 18px;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 15% 15%,#ff5d982e,transparent 30%),radial-gradient(circle at 85% 85%,#8961ff35,transparent 34%),linear-gradient(145deg,#170d26,#2b143a 50%,#161126)}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
+    .ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none}.orb{position:absolute;border-radius:50%;filter:blur(5px);animation:drift 9s ease-in-out infinite alternate}.orb:first-child{width:240px;height:240px;left:-90px;top:8%;background:#ff569726}.orb:nth-child(2){width:320px;height:320px;right:-130px;bottom:4%;background:#7e5dff26;animation-delay:-4s}
+    .floating-heart{position:absolute;bottom:-40px;left:var(--left);font-size:var(--size);color:#fff4;animation:floatUp var(--duration) linear infinite;animation-delay:var(--delay)}
+    .container{position:relative;z-index:1;width:min(100%,560px);padding:34px;border:1px solid #ffffff7a;border-radius:30px;background:#fffffff0;box-shadow:0 28px 80px #0006,0 0 80px #ff4a911c,inset 0 1px #fff;backdrop-filter:blur(18px)}
+    .container:before{content:"";position:absolute;inset:-2px;z-index:-1;border-radius:31px;background:linear-gradient(135deg,#fffb,#ff539540,#8a63ff4d);filter:blur(8px);opacity:.5}
+    h1,h2{text-align:center}h2{min-height:58px;margin:12px 0 26px;font-size:clamp(23px,5vw,30px);line-height:1.45}.eyebrow{margin:0 0 8px;color:var(--pink);font-size:12px;font-weight:800;letter-spacing:.22em;text-align:center}
+    .progress-row{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:13px;font-weight:700}.progress-track{flex:1;height:7px;overflow:hidden;border-radius:99px;background:#ede7ef;box-shadow:inset 0 1px 3px #3517431f}.progress-fill{width:20%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 0 12px #ff4f918c;transition:width .65s cubic-bezier(.22,1,.36,1)}
+    .option{position:relative;display:flex;align-items:center;gap:12px;width:100%;margin:11px 0;padding:14px 16px;overflow:hidden;border:1px solid #e9e1ec;border-radius:16px;background:#ffffffbf;color:var(--ink);cursor:pointer;font:inherit;font-size:16px;text-align:left;box-shadow:0 4px 12px #3a1e4609;transition:.2s;animation:optionIn .45s both;animation-delay:calc(var(--i)*55ms)}
+    .option:before{content:attr(data-label);display:grid;place-items:center;flex:0 0 30px;height:30px;border-radius:50%;background:#f2edf4;color:#97899e;font-size:12px;font-weight:800;transition:.2s}.option:hover{z-index:1;transform:translateY(-2px) scale(1.012);border-color:#ff8fbd;background:#fff7fa;box-shadow:0 9px 22px #ff4f9124}.option.selected{transform:translateX(4px);border-color:var(--pink);background:linear-gradient(105deg,#fff0f6,#f7f0ff);box-shadow:0 7px 22px #ff4f9126}.option.selected:before{color:#fff;background:linear-gradient(135deg,var(--pink),var(--purple));box-shadow:0 3px 10px #ff4f9159}.option.correct{border-color:var(--green);background:#eafff1}.option.wrong{border-color:#ff5b73;background:#fff0f2;animation:shake .42s}
+    .next-btn{position:relative;width:100%;margin-top:20px;padding:16px;overflow:hidden;border:0;border-radius:16px;background:linear-gradient(100deg,var(--pink),#ff5d7d 45%,var(--purple));background-size:200%;color:#fff;cursor:pointer;font-size:17px;font-weight:800;letter-spacing:.05em;box-shadow:0 12px 26px #ff4f914d;transition:.2s;animation:gradient 4s ease infinite}.next-btn:after{content:"→";position:absolute;right:18px;transition:.2s}.next-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 16px 32px #ff4f9161}.next-btn:hover:not(:disabled):after{transform:translateX(4px)}.next-btn:disabled{background:#d4cdd7;box-shadow:none;cursor:default;animation:none}
+    .message{height:24px;margin-top:14px;font-size:14px;font-weight:800;text-align:center}.message.ok{color:#16a55a;animation:pop .35s}.message.error{color:#e23f58}
+    .screen-exit{animation:screenExit .36s both}.screen-enter{animation:screenEnter .48s cubic-bezier(.22,1,.36,1) both}
+    .success{position:relative;overflow:hidden;margin-bottom:26px;padding:21px;border:1px solid #69ff9c38;border-radius:16px;background:#110f18;color:#6aff9b;font:13px/1.8 ui-monospace,Consolas,monospace;text-align:left;box-shadow:inset 0 0 28px #4aff8c0f,0 10px 28px #160b1d2e}.success:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#5dff950e,transparent);transform:translateY(-100%);animation:scan 2.5s linear infinite}.terminal-line:before{content:"> ";opacity:.55}.decrypt-bar{color:#b2ffca;letter-spacing:-.12em}
+    .envelope-wrap{display:grid;place-items:center;height:130px;margin:0 auto -22px;perspective:700px}.envelope{position:relative;width:150px;height:94px;border-radius:7px;background:#f6b7cb;box-shadow:0 16px 26px #853c5c33;animation:bounce 1.4s ease-in-out infinite alternate}.envelope:before,.envelope:after{content:"";position:absolute;inset:0}.envelope:before{z-index:2;border-radius:7px;background:linear-gradient(145deg,transparent 49%,#ffd1df 50%) left/50% 100% no-repeat,linear-gradient(215deg,transparent 49%,#ffc4d7 50%) right/50% 100% no-repeat}.envelope:after{z-index:1;clip-path:polygon(0 0,100% 0,50% 68%);background:#ffdae6;transform-origin:top;animation:flap .8s .65s cubic-bezier(.22,1,.36,1) both}.seal{position:absolute;z-index:3;top:34px;left:58px;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#ff477d,#d92862);color:#fff;box-shadow:0 3px 8px #6f1f4c4d;animation:seal .35s .55s ease both reverse}
+    .letter-title{margin:24px 0 18px;font:clamp(27px,7vw,36px) Georgia,"Yu Mincho",serif}.letter{position:relative;padding:30px 27px;border:1px solid #f0ded4;border-radius:8px;background:linear-gradient(#bd8b6f0e 1px,transparent 1px) 0 12px/100% 32px,#fffaf4;box-shadow:0 16px 36px #5b36271f;font:16px/2 Georgia,"Yu Mincho",serif;white-space:pre-line;transform-origin:top;animation:unfold .9s .8s cubic-bezier(.22,1,.36,1) both}.letter:before,.letter:after{content:"♥";position:absolute;color:#ff4f9129;font-size:24px}.letter:before{top:12px;right:16px}.letter:after{bottom:10px;left:16px}
+    .hidden{display:none}.confetti{position:fixed;z-index:20;top:var(--top);left:var(--left);width:var(--w);height:calc(var(--w)*.55);border-radius:2px;background:var(--color);pointer-events:none;animation:confetti var(--duration) cubic-bezier(.1,.7,.35,1) forwards}.flash{position:fixed;z-index:15;inset:0;pointer-events:none;background:radial-gradient(circle,#ffffffe6,#ff5a9c33 38%,transparent 72%);animation:flash .65s forwards}
+    @keyframes drift{to{transform:translate(35px,45px) scale(1.14)}}@keyframes floatUp{0%{opacity:0;transform:translateY(0) rotate(-15deg)}12%{opacity:1}100%{opacity:0;transform:translateY(-115vh) rotate(25deg)}}@keyframes optionIn{from{opacity:0;transform:translateY(12px)}}@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}@keyframes pop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.15)}}@keyframes gradient{50%{background-position:100%}}@keyframes screenExit{to{opacity:0;transform:translateX(-24px) scale(.98)}}@keyframes screenEnter{from{opacity:0;transform:translateX(24px) scale(.98);filter:blur(3px)}}@keyframes scan{to{transform:translateY(100%)}}@keyframes bounce{to{transform:translateY(-7px) rotate(1deg)}}@keyframes flap{to{transform:rotateX(180deg);z-index:0}}@keyframes seal{to{opacity:0;transform:scale(1.6)}}@keyframes unfold{from{opacity:0;transform:rotateX(-75deg) translateY(-35px) scaleY(.25)}}@keyframes confetti{to{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r))}}@keyframes flash{to{opacity:0}}
+    @media(max-width:520px){body{padding:16px 12px}.container{padding:26px 20px;border-radius:24px}h2{min-height:auto;margin-bottom:20px}.option{padding:12px 14px;margin:9px 0}.letter{padding:27px 21px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.floating-heart{display:none}}
   </style>
 </head>
-
 <body>
-
-<div class="container">
-
-  <div id="quizScreen" class="fade">
-
-    <div class="progress" id="progress">
-      Question 1 / 5
-    </div>
-
-    <h2 id="question">
-      問題
-    </h2>
-
-    <div id="options"></div>
-
-    <button
-      id="nextButton"
-      class="next-btn"
-      disabled
-    >
-      回答する
-    </button>
-
-    <div id="message" class="message"></div>
-
+  <div class="ambient" aria-hidden="true">
+    <i class="orb"></i><i class="orb"></i>
+    <i class="floating-heart" style="--left:8%;--size:18px;--duration:11s;--delay:-3s">♥</i>
+    <i class="floating-heart" style="--left:24%;--size:11px;--duration:14s;--delay:-8s">♥</i>
+    <i class="floating-heart" style="--left:49%;--size:15px;--duration:12s;--delay:-5s">♥</i>
+    <i class="floating-heart" style="--left:72%;--size:20px;--duration:15s;--delay:-11s">♥</i>
+    <i class="floating-heart" style="--left:89%;--size:12px;--duration:10s;--delay:-7s">♥</i>
   </div>
-
-
-  <div id="letterScreen" class="hidden fade">
-
-    <div class="success">
-      AUTHENTICATION SUCCESS<br><br>
-
-      USER VERIFIED ✓<br>
-      ACCESS LEVEL : LOVER<br><br>
-
-      Decrypting message...<br>
-      ████████████████ 100%
-    </div>
-
-    <h1>💌 ○○へ</h1>
-
-    <div class="letter">
-○○へ
+  <main class="container" id="card">
+    <section id="quizScreen">
+      <p class="eyebrow">MEMORY AUTHENTICATION</p>
+      <div class="progress-row"><span id="progress">01 / 05</span><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+      <h2 id="question">問題</h2>
+      <div id="options"></div>
+      <button id="nextButton" class="next-btn" disabled>回答する</button>
+      <div id="message" class="message" aria-live="polite"></div>
+    </section>
+    <section id="letterScreen" class="hidden">
+      <div class="success" aria-live="polite">
+        <div class="terminal-line">AUTHENTICATION SUCCESS</div>
+        <div class="terminal-line">USER VERIFIED ✓</div>
+        <div class="terminal-line">ACCESS LEVEL : LOVER</div>
+        <div class="terminal-line">Decrypting message... <span class="decrypt-bar">████████████████</span> 100%</div>
+      </div>
+      <div class="envelope-wrap" aria-hidden="true"><div class="envelope"><span class="seal">♥</span></div></div>
+      <h1 class="letter-title">💌 ○○へ</h1>
+      <div class="letter">○○へ
 
 ここまで来てくれてありがとう。
 
@@ -190,219 +74,55 @@
 
 いつもありがとう。
 
-大好きです。
-    </div>
-
-  </div>
-
-</div>
-
-
-<script>
-
-const questions = [
-
-  {
-    question: "初めてデートした場所は？",
-    options: [
-      "水族館",
-      "映画館",
-      "カフェ",
-      "ゲームセンター",
-      "公園"
-    ],
-    answer: 0
-  },
-
-  {
-    question: "初めて一緒に食べたものは？",
-    options: [
-      "ラーメン",
-      "焼肉",
-      "寿司",
-      "パスタ",
-      "ハンバーグ"
-    ],
-    answer: 1
-  },
-
-  {
-    question: "俺が一番好きなのは？",
-    options: [
-      "ゲーム",
-      "ダーツ",
-      "寝ること",
-      "ご飯",
-      "あなた"
-    ],
-    answer: 4
-  },
-
-  {
-    question: "思い出の場所はどこ？",
-    options: [
-      "水族館",
-      "カラオケ",
-      "公園",
-      "ゲームセンター",
-      "映画館"
-    ],
-    answer: 0
-  },
-
-  {
-    question: "これからも一緒にいてくれますか？",
-    options: [
-      "はい",
-      "もちろん",
-      "当然",
-      "ずっと",
-      "全部正解"
-    ],
-    answer: 4
-  }
-
-];
-
-
-let currentQuestion = 0;
-let selectedAnswer = null;
-
-
-const questionText =
-  document.getElementById("question");
-
-const optionsContainer =
-  document.getElementById("options");
-
-const nextButton =
-  document.getElementById("nextButton");
-
-const progress =
-  document.getElementById("progress");
-
-const message =
-  document.getElementById("message");
-
-
-function showQuestion() {
-
-  selectedAnswer = null;
-
-  nextButton.disabled = true;
-
-  message.textContent = "";
-
-  const q = questions[currentQuestion];
-
-  progress.textContent =
-    `Question ${currentQuestion + 1} / ${questions.length}`;
-
-  questionText.textContent =
-    q.question;
-
-  optionsContainer.innerHTML = "";
-
-
-  q.options.forEach((option, index) => {
-
-    const button =
-      document.createElement("button");
-
-    button.textContent = option;
-
-    button.classList.add("option");
-
-
-    button.onclick = () => {
-
-      document
-        .querySelectorAll(".option")
-        .forEach(btn => {
-          btn.classList.remove("selected");
-        });
-
-
-      button.classList.add("selected");
-
-      selectedAnswer = index;
-
-      nextButton.disabled = false;
-
+大好きです。</div>
+    </section>
+  </main>
+  <script>
+    const questions=[
+      {question:"初めてデートした場所は？",options:["水族館","映画館","カフェ","ゲームセンター","公園"],answer:0},
+      {question:"初めて一緒に食べたものは？",options:["ラーメン","焼肉","寿司","パスタ","ハンバーグ"],answer:1},
+      {question:"俺が一番好きなのは？",options:["ゲーム","ダーツ","寝ること","ご飯","あなた"],answer:4},
+      {question:"思い出の場所はどこ？",options:["水族館","カラオケ","公園","ゲームセンター","映画館"],answer:0},
+      {question:"これからも一緒にいてくれますか？",options:["はい","もちろん","当然","ずっと","全部正解"],answer:4}
+    ];
+    let currentQuestion=0,selectedAnswer=null,isTransitioning=false;
+    const quizScreen=document.querySelector("#quizScreen"),letterScreen=document.querySelector("#letterScreen"),card=document.querySelector("#card"),questionText=document.querySelector("#question"),optionsContainer=document.querySelector("#options"),nextButton=document.querySelector("#nextButton"),progress=document.querySelector("#progress"),progressFill=document.querySelector("#progressFill"),message=document.querySelector("#message"),reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function showQuestion(animate=false){
+      selectedAnswer=null;isTransitioning=false;nextButton.disabled=true;message.textContent="";message.className="message";
+      const q=questions[currentQuestion];
+      progress.textContent=`${String(currentQuestion+1).padStart(2,"0")} / ${String(questions.length).padStart(2,"0")}`;
+      progressFill.style.width=`${(currentQuestion+1)/questions.length*100}%`;questionText.textContent=q.question;optionsContainer.innerHTML="";
+      q.options.forEach((option,index)=>{const button=document.createElement("button");button.type="button";button.textContent=option;button.className="option";button.dataset.label=String.fromCharCode(65+index);button.style.setProperty("--i",index);button.onclick=()=>selectOption(button,index);optionsContainer.appendChild(button)});
+      if(animate){quizScreen.classList.remove("screen-exit");void quizScreen.offsetWidth;quizScreen.classList.add("screen-enter")}
+    }
+    function selectOption(button,index){
+      if(isTransitioning)return;
+      document.querySelectorAll(".option").forEach(btn=>btn.classList.remove("selected","wrong"));
+      button.classList.add("selected");selectedAnswer=index;nextButton.disabled=false;message.textContent="";message.className="message";
+    }
+    nextButton.onclick=()=>{
+      if(selectedAnswer===null||isTransitioning)return;
+      const q=questions[currentQuestion],selectedButton=optionsContainer.children[selectedAnswer];
+      if(selectedAnswer!==q.answer){
+        selectedButton.classList.remove("selected");void selectedButton.offsetWidth;selectedButton.classList.add("wrong");
+        message.textContent="ACCESS DENIED — もう一度思い出してみて";message.className="message error";
+        card.animate([{transform:"translateX(0)"},{transform:"translateX(-5px)"},{transform:"translateX(5px)"},{transform:"translateX(0)"}],{duration:250});return
+      }
+      isTransitioning=true;nextButton.disabled=true;selectedButton.classList.add("correct");message.textContent="✓ MEMORY MATCHED";message.className="message ok";burst(selectedButton,22);
+      setTimeout(()=>{currentQuestion++;if(currentQuestion>=questions.length){showLetter();return}quizScreen.classList.remove("screen-enter");quizScreen.classList.add("screen-exit");setTimeout(()=>showQuestion(true),reduceMotion?0:300)},reduceMotion?0:680)
     };
-
-
-    optionsContainer.appendChild(button);
-
-  });
-
-}
-
-
-nextButton.onclick = () => {
-
-  if (selectedAnswer === null) {
-    return;
-  }
-
-
-  const q =
-    questions[currentQuestion];
-
-
-  if (selectedAnswer !== q.answer) {
-
-    message.textContent =
-      "❌ ACCESS DENIED";
-
-    return;
-  }
-
-  nextButton.disabled = true;
-
-  message.textContent =
-    "✓ 正解";
-
-
-  setTimeout(() => {
-
-    currentQuestion++;
-
-
-    if (
-      currentQuestion >= questions.length
-    ) {
-
-      showLetter();
-
+    function burst(origin,amount){
+      if(reduceMotion)return;
+      const rect=origin.getBoundingClientRect(),colors=["#ff4f91","#ffcc5c","#9b72ff","#50e3c2","#fff"];
+      for(let i=0;i<amount;i++){const p=document.createElement("i"),a=Math.PI*2*i/amount+Math.random()*.35,d=60+Math.random()*105;p.className="confetti";p.style.cssText=`--left:${rect.left+rect.width/2}px;--top:${rect.top+rect.height/2}px;--x:${Math.cos(a)*d}px;--y:${Math.sin(a)*d}px;--r:${Math.random()*720-360}deg;--w:${6+Math.random()*7}px;--duration:${550+Math.random()*450}ms;--color:${colors[i%colors.length]}`;document.body.appendChild(p);p.onanimationend=()=>p.remove()}
     }
-    else {
-
-      showQuestion();
-
+    function finale(){
+      if(reduceMotion)return;
+      const flash=document.createElement("div");flash.className="flash";document.body.appendChild(flash);flash.onanimationend=()=>flash.remove();
+      burst({getBoundingClientRect:()=>({left:innerWidth/2-1,top:Math.min(innerHeight*.34,300),width:2,height:2})},90)
     }
-
-  }, 500);
-
-};
-
-
-function showLetter() {
-
-  document
-    .getElementById("quizScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("letterScreen")
-    .classList.remove("hidden");
-
-}
-
-
-showQuestion();
-
-</script>
-
+    function showLetter(){quizScreen.classList.add("hidden");letterScreen.classList.remove("hidden");letterScreen.classList.add("screen-enter");document.body.style.alignItems="start";scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"});finale()}
+    showQuestion();
+  </script>
 </body>
 </html>
